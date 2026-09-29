@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TRIPT 360 — Viewer V6.2</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img id="logo" alt="TRIPT">
+    <span>TRIPT 360</span>
+  </div>
+  <button id="backPlan" class="ghost hidden">← Plan</button>
+</header>
+
+<main id="planScreen" class="screen">
+  <div class="toolbar">
+    <select id="floorSelect"></select>
+    <div id="projectTitle"></div>
+  </div>
+
+  <div id="planViewport" class="plan-wrap">
+    <div id="planCanvas" class="plan-canvas">
+      <img id="planImage" class="plan-image" alt="Floor plan">
+      <div id="markerLayer" class="marker-layer"></div>
+    </div>
+  </div>
+
+  <p id="planEmpty" class="empty hidden">No 360 views have been added to this floor yet.</p>
+</main>
+
+<main id="viewerScreen" class="viewer-screen hidden">
+  <div id="pano"></div>
+  <div id="viewTitle" class="view-title"></div>
+  <div class="viewer-bottom-nav">
+    <div id="bottomNav" class="bottom-nav" aria-label="360 view navigation"></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"></script>
+<script src="js/viewer.js"></script>
+</body>
+</html>

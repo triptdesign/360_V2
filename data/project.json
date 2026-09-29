@@ -1,0 +1,46 @@
+{
+  "version": "6.2.3",
+  "title": "TRIPT 360",
+  "logo": "assets/logos/tript-logo-circle.webp",
+  "floors": [
+    {
+      "id": "ground-floor",
+      "name": "Ground Floor",
+      "plan": "assets/plan/3_1Scene 37.webp",
+      "views": [
+        {
+          "id": "view-1790680034000",
+          "name": "reception",
+          "panorama": "assets/panoramas/3_1Scene 33.webp",
+          "x": 43.11,
+          "y": 76.59,
+          "heading": 0
+        },
+        {
+          "id": "view-1790680053127",
+          "name": "manager room",
+          "panorama": "assets/panoramas/3_1Scene 34.webp",
+          "x": 33.37,
+          "y": 48.23,
+          "heading": 0
+        },
+        {
+          "id": "view-1790680066487",
+          "name": "recreation area",
+          "panorama": "assets/panoramas/3_1Scene 35.webp",
+          "x": 51.04,
+          "y": 27.61,
+          "heading": 0
+        },
+        {
+          "id": "view-1790680071263",
+          "name": "working area",
+          "panorama": "assets/panoramas/3_1Scene 36.webp",
+          "x": 74.3,
+          "y": 26.82,
+          "heading": 0
+        }
+      ]
+    }
+  ]
+}

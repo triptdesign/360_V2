@@ -1,0 +1,95 @@
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:Arial,sans-serif;background:#111;color:#fff}
+body{overflow:hidden}
+.topbar{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#171717;position:relative;z-index:10}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700}
+.brand img{width:32px;height:32px;object-fit:contain}
+.screen{height:calc(100vh - 58px);padding:12px;overflow:hidden}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:10px;height:36px}
+.toolbar select{padding:8px;border-radius:7px;max-width:180px}
+.plan-wrap{position:relative;width:100%;height:calc(100% - 46px);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#202020;border-radius:10px;touch-action:none}
+.plan-canvas{position:relative;flex:0 0 auto;transform-origin:center center;will-change:transform}
+.plan-image{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.marker-layer{position:absolute;inset:0;pointer-events:none}
+.plan-marker{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;padding:0;border:0;background:transparent;pointer-events:auto;cursor:pointer}
+.marker-dot{position:absolute;inset:0;border-radius:50%;border:3px solid #fff;background:#b21f35;box-shadow:0 3px 12px #0008}
+.marker-arrow{position:absolute;z-index:2;left:50%;top:-19px;transform-origin:50% 100%;font-size:20px;color:#b21f35;text-shadow:0 1px 3px #000;line-height:1}
+.marker-label{position:absolute;top:33px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#111d;padding:4px 7px;border-radius:5px;font-size:11px;color:#fff}
+.viewer-screen{position:fixed;inset:58px 0 0}
+.viewer-screen #pano{width:100%;height:100%}
+.view-title{position:absolute;top:14px;left:50%;transform:translateX(-50%);padding:8px 14px;border-radius:8px;background:#000a;z-index:5}
+.ghost{background:#333;color:#fff;border:0;border-radius:7px;padding:8px 12px}
+.hidden{display:none!important}
+.empty{text-align:center;color:#aaa}
+
+@media(max-width:700px){
+  .topbar{height:52px;padding:0 10px}
+  .brand img{width:28px;height:28px}
+  .screen{height:calc(100vh - 52px);padding:8px}
+  .toolbar{margin-bottom:8px;height:34px}
+  .toolbar select{padding:7px}
+  .plan-wrap{height:calc(100% - 42px);border-radius:8px}
+  .marker-dot{border-width:2px}
+  .marker-label{font-size:10px;top:30px}
+  .viewer-screen{inset:52px 0 0}
+}
+
+/* 360 viewer navigation — visible only while viewing a panorama */
+.viewer-bottom-nav{
+  position:absolute;
+  left:50%;
+  bottom:max(14px,env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:min(92vw,900px);
+  z-index:20;
+  pointer-events:none;
+}
+.bottom-nav{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:7px;
+  border-radius:12px;
+  background:#111e;
+  border:1px solid #ffffff22;
+  box-shadow:0 8px 30px #0008;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  scrollbar-width:none;
+  pointer-events:auto;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x;
+}
+.bottom-nav::-webkit-scrollbar{display:none}
+.nav-btn{
+  flex:0 0 auto;
+  border:1px solid #ffffff1f;
+  border-radius:8px;
+  padding:9px 13px;
+  background:#252525;
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.nav-btn:hover{background:#333}
+.nav-btn.active{background:#b21f35;border-color:#b21f35}
+.plan-nav-btn{background:#eee;color:#111;border-color:#eee;font-weight:700}
+.plan-nav-btn:hover{background:#fff}
+
+@media(max-width:700px){
+  .viewer-bottom-nav{
+    width:calc(100vw - 14px);
+    bottom:max(8px,env(safe-area-inset-bottom));
+  }
+  .bottom-nav{gap:5px;padding:6px;border-radius:10px}
+  .nav-btn{padding:8px 11px;font-size:12px}
+  .view-title{top:10px;padding:7px 11px;font-size:13px}
+}
+
+@media(max-height:500px) and (orientation:landscape){
+  .viewer-bottom-nav{bottom:5px}
+  .nav-btn{padding:6px 10px}
+}

@@ -1,0 +1,66 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#151515;color:#eee}
+body{overflow:hidden}
+.editor-head{min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:#1e1e1e;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.editor-head span{color:#999;font-size:13px}
+.actions{display:flex;gap:8px}
+button,select,input{font:inherit}
+button{border:0;border-radius:7px;padding:9px 13px;background:#333;color:#fff;cursor:pointer}
+button.primary{background:#b21f35}
+button.danger{background:#6b1c27}
+button:active{transform:translateY(1px)}
+.editor-main{display:grid;grid-template-columns:minmax(0,1fr) 330px;height:calc(100vh - 60px);min-height:0}
+.workspace{padding:12px;min-width:0;min-height:0;display:flex;flex-direction:column}
+.plan-toolbar{display:flex;gap:8px;margin-bottom:10px;flex:0 0 auto}
+.plan-toolbar select{min-width:120px}
+.plan-viewport{position:relative;flex:1;min-height:0;overflow:hidden;background:#222;border-radius:10px;display:flex;align-items:center;justify-content:center;touch-action:none}
+.plan-stage{position:relative;width:auto;height:auto;max-width:none;max-height:none;transform-origin:center center;flex:0 0 auto}
+.plan-stage img{display:block;width:auto;height:auto;max-width:none;max-height:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.marker-layer{position:absolute;inset:0}
+.marker{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#b21f35;border:3px solid #fff;box-shadow:0 3px 12px #0008;cursor:grab;z-index:5;touch-action:none}
+.marker:active{cursor:grabbing}
+.marker.selected{outline:3px solid #fff8}
+.direction{position:absolute;width:32px;height:32px;left:50%;top:-31px;transform:translateX(-50%);border-radius:50%;border:2px solid #fff;background:#222;cursor:grab;font-size:14px;display:flex;align-items:center;justify-content:center;padding:0}
+.marker-label{position:absolute;top:30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;background:#111e;padding:3px 6px;border-radius:4px}
+.panel{background:#1d1d1d;border-left:1px solid #333;padding:18px;overflow:auto;min-width:0}
+.panel h2{margin-top:0}
+.panel label{display:block;font-size:12px;color:#aaa;margin:13px 0}
+.panel input,.panel select{width:100%;margin-top:6px;padding:9px;background:#292929;border:1px solid #444;color:#fff;border-radius:6px}
+.coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.coord-display{margin:14px 0 4px;padding:9px 10px;background:#252525;border:1px solid #383838;border-radius:6px;display:flex;flex-direction:column;gap:4px}
+.coord-display span{font-size:11px;color:#999}
+.coord-display strong{font-size:13px;color:#fff}
+.form-actions{display:flex;gap:8px;margin-top:18px}
+.form-actions button{flex:1}
+.muted,.small{color:#999;font-size:13px;line-height:1.5}
+.hint{color:#999;font-size:12px;padding:8px 2px;flex:0 0 auto}
+.status{margin-top:12px;color:#9f9;font-size:13px;line-height:1.4}
+.hidden{display:none!important}
+hr{border:0;border-top:1px solid #333;margin:20px 0}
+
+@media(max-width:900px){
+  .editor-main{grid-template-columns:1fr;height:auto;min-height:calc(100vh - 60px);overflow:auto}
+  body{overflow:auto}
+  .workspace{height:58vh;min-height:360px}
+  .panel{border-left:0;border-top:1px solid #333}
+}
+
+@media(max-width:600px){
+  .editor-head{align-items:flex-start;flex-direction:column;padding:10px 12px}
+  .actions{width:100%}
+  .actions button{flex:1}
+  .workspace{height:52vh;min-height:300px;padding:8px}
+  .plan-toolbar{margin-bottom:8px}
+  .plan-toolbar button,.plan-toolbar select{padding:8px}
+  .panel{padding:14px}
+  .hint{font-size:11px}
+  .marker{width:24px;height:24px;border-width:2px}
+  .direction{width:28px;height:28px;top:-28px}
+  .marker-label{font-size:10px;top:26px}
+}
+
+@media(max-width:600px) and (orientation:landscape){
+  .workspace{height:68vh;min-height:260px}
+  .editor-main{grid-template-columns:1fr}
+}

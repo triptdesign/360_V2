@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TRIPT V6.2.3 — Plan Editor</title>
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+<header class="editor-head">
+  <div class="brand"><strong>TRIPT V6.2.3</strong><span>Plan Editor</span></div>
+  <div class="actions">
+    <button id="addView">＋ Add View</button>
+    <button id="saveProject" class="primary">Save Project</button>
+  </div>
+</header>
+
+<main class="editor-main">
+  <section class="workspace">
+    <div class="plan-toolbar">
+      <select id="floorSelect"></select>
+      <button id="resetView">Reset Plan</button>
+    </div>
+
+    <div id="editorPlanViewport" class="plan-viewport">
+      <div id="editorPlan" class="plan-stage">
+        <img id="editorPlanImage" alt="Floor plan">
+        <div id="editorMarkers" class="marker-layer"></div>
+      </div>
+    </div>
+
+    <div class="hint">
+      <strong>Add View</strong> → click the plan → edit the selected marker.
+      Drag marker → move. Drag direction handle → rotate.
+      Mouse wheel / pinch → zoom. Two-finger / middle-button drag → pan.
+    </div>
+  </section>
+
+  <aside class="panel">
+    <h2>View Properties</h2>
+    <div id="noSelection" class="muted">Select a marker to edit it.</div>
+
+    <form id="viewForm" class="hidden">
+      <label>Name<input id="viewName" required></label>
+
+      <label>Panorama
+        <select id="panoramaSelect" required></select>
+      </label>
+
+      <div class="coord-display">
+        <span>Marker Coordinates</span>
+        <strong id="liveCoordinates">X 0.00% | Y 0.00%</strong>
+      </div>
+
+      <div class="coord-grid">
+        <label>X %<input id="xPos" type="number" step="0.01" min="0" max="100"></label>
+        <label>Y %<input id="yPos" type="number" step="0.01" min="0" max="100"></label>
+      </div>
+
+      <label>Heading °<input id="heading" type="number" step="1" min="-180" max="360"></label>
+
+      <div class="form-actions">
+        <button type="button" id="applyChanges" class="primary">Apply Changes</button>
+        <button type="button" id="deleteView" class="danger">Delete</button>
+      </div>
+    </form>
+
+    <hr>
+
+    <h3>How saving works</h3>
+    <p class="small">
+      Save Project downloads a new <code>project.json</code>.
+      Replace <code>data/project.json</code> with that file before testing the viewer.
+    </p>
+    <div id="status" class="status"></div>
+  </aside>
+</main>
+
+<script src="data/scenes.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>
